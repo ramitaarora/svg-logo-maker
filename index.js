@@ -61,7 +61,7 @@ class Square extends Shape {
     }
     render() {
         return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-    <rect x="90" y="40" width="150" height="150" fill="${this.shapeColour}" />
+    <rect x="90" y="40" width="120" height="120" fill="${this.shapeColour}" />
     <text x="150" y="125" font-size="60" text-anchor="middle" fill="${this.textColour}">${this.logoText}</text>      
 </svg>`
     }
@@ -74,6 +74,12 @@ const questions = [
         type: 'input',
         message: 'Enter the text for the logo (must not be more than three characters).',
         name: 'logoText',
+        validate: input => {
+            if (input.length > 3) {
+                return 'Logo text must not be more than three characters!'
+            }
+            return true;
+        }
     },
     {
         type: 'input',
@@ -100,7 +106,7 @@ function init() {
         .prompt(questions).then(({logoText, textColour, shape, shapeColour}) => {
             let createShape = new Shape(logoText, textColour, shape, shapeColour);
             let fileData = createShape.render();
-            let fileName = `${logoText}.svg`;
+            let fileName = `${logoText.toLowerCase()}.svg`;
             fs.writeFile(fileName, fileData, (err) =>
             err ? console.log(err) : console.log('Success!')
             )
