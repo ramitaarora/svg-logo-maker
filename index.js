@@ -1,9 +1,6 @@
 let inquirer = require('inquirer');
 const fs = require('fs');
-const Shape = require('./lib/shape.js')
-// const Circle = require('./lib/circle.js');
-// const Triangle = require('./lib/triangle.js');
-// const Square = require('./lib/square.js');
+const {Circle, Square, Triangle} = require('./lib/shapes.js')
 
 // Inquirer Prompts
 
@@ -42,12 +39,18 @@ const questions = [
 function init() {
     inquirer
         .prompt(questions).then(({logoText, textColour, shape, shapeColour}) => {
-            let createShape = new Shape(logoText, textColour, shape, shapeColour);
-            let fileData = createShape.render();
-            let fileName = `${logoText.toLowerCase()}.svg`;
-            fs.writeFile(fileName, fileData, (err) =>
-            err ? console.log(err) : console.log('Success!')
-            )
+            if (shape === 'Circle') {
+                let createShape = new Circle(logoText, textColour, shapeColour);
+                let fileData = createShape.render();
+                let fileName = `${logoText.toLowerCase()}.svg`;
+                fs.writeFile(fileName, fileData, (err) =>
+                err ? console.log(err) : console.log('Success!')
+                )
+            }
+
+
+            
+            
         });
 }
 
