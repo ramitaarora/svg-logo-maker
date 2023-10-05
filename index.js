@@ -3,10 +3,27 @@ const fs = require('fs');
 
 class Shape {
     constructor(logoText, textColour, shape, shapeColour) {
-        super(logoText, textColour, shape, shapeColour)
+        this.logoText = logoText;
+        this.textColour = textColour;
+        this.shape = shape;
+        this.shapeColour = shapeColour;
     }
     render() {
-
+        if (this.shape === 'Circle') {
+            let newCircle = new Circle(this.logoText, this.textColour, this.shape, this.shapeColour);
+            newCircle.render();
+        }
+        else if (this.shape === 'Triangle') {
+            let newTriangle = new Triangle(this.logoText, this.textColour, this.shape, this.shapeColour);
+            newTriangle.render();
+        }
+        else if (this.shape === 'Square') {
+            let newSquare = new Square(this.logoText, this.textColour, this.shape, this.shapeColour);
+            newSquare.render();
+        }
+        else {
+            console.log('Error');
+        }
     }
 }
 
@@ -15,7 +32,12 @@ class Circle extends Shape {
         super(logoText, textColour, shape, shapeColour)
     }
     render() {
-
+        return `
+        <svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="150" cy="100" r="80" fill="green" />
+            <text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>
+        </svg>
+        `;
     }
 }
 
@@ -24,7 +46,7 @@ class Triangle extends Shape {
         super(logoText, textColour, shape, shapeColour)
     }
     render() {
-        
+        return ``;
     }
 }
 
@@ -33,7 +55,7 @@ class Square extends Shape {
         super(logoText, textColour, shape, shapeColour)
     }
     render() {
-        
+        return ``;
     }
 }
 
@@ -54,7 +76,7 @@ const questions = [
         type: 'list',
         message: 'Select a shape for the logo.',
         name: 'shape',
-        choices: ['triangle', 'circle', 'square']
+        choices: ['Circle', 'Triangle', 'Square']
     },
     {
         type: 'input',
@@ -67,12 +89,14 @@ const questions = [
 
 function init() {
     inquirer
-        .prompt(questions).then((data) => {
-            let data;
-            let fileName;
-            fs.writeFile(fileName, data, (err) =>
-            err ? console.log(err) : console.log('Success!')
-            )
+        .prompt(questions).then(({logoText, textColour, shape, shapeColour}) => {
+            let createShape = new Shape(logoText, textColour, shape, shapeColour);
+            let fileData = createShape.render();
+            let fileName = 'test.svg';
+            console.log(fileData);
+            // fs.writeFile(fileName, fileData, (err) =>
+            // err ? console.log(err) : console.log('Success!')
+            // )
         });
 }
 
