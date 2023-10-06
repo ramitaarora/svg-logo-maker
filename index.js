@@ -41,9 +41,9 @@ function init() {
         .prompt(questions).then(({logoText, textColour, shape, shapeColour}) => {
             let createShape = new Shape(logoText, textColour, shape, shapeColour);
             let fileData = createShape.render();
-            let fileName = `${logoText.toLowerCase()}.svg`;
+            let fileName = 'logo.svg';
             fs.writeFile(fileName, fileData, (err) =>
-            err ? console.log(err) : console.log('Success!')
+            err ? console.log(err) : console.log(`Generated ${fileName}.`)
             )
         });
 }
