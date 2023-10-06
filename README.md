@@ -1,4 +1,4 @@
-# Svg Logo Maker
+# SVG Logo Maker
 
 ## UCLA Bootcamp Module 10 Challenge
 
@@ -14,8 +14,8 @@ Upon answering the question, a logo.svg file will be created in the directory ac
 
 ## Installation
 
-To install, in the directory, write `npm install`.
-To run, write `node index.js`.
+To install, run `npm install`.
+To run, run `node index.js`.
 
 ## Usage
 
@@ -27,7 +27,7 @@ The sample SVG can be found at https://github.com/ramitaarora/svg-logo-maker/blo
 
 ## Tests
 
-To run tests, write `npm test` in the directory.
+To run tests, run `npm test`.
 
 ## Credits
 
