@@ -21,7 +21,7 @@ To run, run `node index.js`.
 
 <img src="./assets/images/svg-screenshot.png" alt="screenshot"/>
 
-A video can be viewed at https://drive.google.com/file/d/1Kao-A7ggqsCUH5llCGh47rq8YC5o8pSI/view.
+A video can be viewed at https://drive.google.com/file/d/14LGt-MD6IVHUIo2cKiGAD8t-3vx0hDTU/view.
 
 The sample SVG can be found at https://github.com/ramitaarora/svg-logo-maker/blob/main/logo.svg or seen here:
 
